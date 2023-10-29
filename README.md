@@ -47,3 +47,7 @@ It will automatically download and install the statically built Python and start
 ```shell
 ./dist/simple-curl https://example.com
 ```
+
+## Reference
+
+* https://github.com/a-scie/jump/blob/main/docs/packaging.md

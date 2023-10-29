@@ -3,5 +3,4 @@ script-env:
 
 
 simple-curl-app:
-	cd apps/simple-curl && pex -o deps.pex -r requirements.txt
-	cd apps/simple-curl && ~/bin/science lift build --dest-dir=../../dist lift.toml
+	$(MAKE) -C apps/simple-curl
