@@ -1,5 +1,3 @@
-# Independent scripts
-
 ## Setup
 
 ```shell
@@ -7,30 +5,45 @@
 pip install pex
 ```
 
+# Independent scripts
+
 ## Building pex to ship dependencies
 
 ```shell
-make app-env
+make script-env
 ```
 
-It creates `app-env.pex` file, which works like a Python executable but uses the interpreter available in the system while all dependencies in `requirements.txt` are included inside.
+It creates `script-env.pex` file, which works like a Python executable but uses the interpreter available in the system while all dependencies in `requirements.txt` are included inside.
 
 ## Uploading to customer sites
 
 Copy the following files:
-- `app-env.pex`
+- `dist/script-env.pex`
 - `scripts/xxx.py`
 
 ## Executing the scripts
 
 Assuming that the current shell has a working, compatible Python interpreter (usually the version installed by us, an indygreg build):
 ```shell
-chmod +x app-env.px
-./app-env.pex scripts/xxx.py
+chmod +x dist/script-env.px
+./dist/script-env.pex scripts/xxx.py
 ```
 
 
-# Independent executable (TODO)
+# Independent executable
 
-* TODO: Embed the console scripts in PEX and make it the default
-* TODO: Integrate with scie to auto-install required Python version
+First, download the appropriate `science` binary from [the scie-lift release page](https://github.com/a-scie/lift/releases/tag/v0.3.0),
+and make it available via your PATH.
+
+Then run:
+```shell
+make simple-curl-app
+```
+
+## Executing the executable
+
+It will automatically download and install the statically built Python and start:
+
+```shell
+./dist/simple-curl https://example.com
+```

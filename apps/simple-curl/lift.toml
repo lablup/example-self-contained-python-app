@@ -1,0 +1,27 @@
+[lift]
+name = "simple-curl"
+description = "A simple curl based on requests"
+
+[[lift.interpreters]]
+id = "cpython"
+provider = "PythonBuildStandalone"
+release = "20231002"
+version = "3.11.6"
+# By default science ships as a "thin" scie that fetches CPython 3.12 on first run.
+# We use `science lift --invert-lazy cpython ...` when producing "fat" scies.
+lazy = true
+
+[[lift.files]]
+name = "deps.pex"
+
+[[lift.files]]
+name = "main.py"
+
+[[lift.commands]]
+name = ""  # set as the default boot command
+exe = "#{cpython:python}"
+args = [
+    "{deps.pex}",
+    "--",
+    "{main.py}",
+]
